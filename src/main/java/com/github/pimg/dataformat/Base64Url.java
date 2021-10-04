@@ -1,5 +1,7 @@
 package com.github.pimg.dataformat;
 
+import com.github.pimg.dataformat.util.MultibaseBytes;
+
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
@@ -23,9 +25,6 @@ public class Base64Url implements Dataformat{
 	public byte[] encode(byte[] bytes) {
 		byte[] base64Prefix = "m".getBytes(StandardCharsets.UTF_8);
 		byte[] encodedBytes = java.util.Base64.getUrlEncoder().encode(bytes);
-		byte[] multibaseBytes = new byte[base64Prefix.length + encodedBytes.length];
-		System.arraycopy(base64Prefix, 0, multibaseBytes, 0, base64Prefix.length);
-		System.arraycopy(encodedBytes, 0, multibaseBytes, base64Prefix.length, encodedBytes.length);
-		return multibaseBytes;
+		return MultibaseBytes.createMultiBaseByteArr(base64Prefix, encodedBytes);
 	}
 }
