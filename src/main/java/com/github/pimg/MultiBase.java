@@ -33,7 +33,12 @@ public class MultiBase {
 		}
 
 		@Override
-		public String encode(byte[] bytes) {
+		public String encodeToString(byte[] bytes) {
+			return dataEncoder.encodeToString(bytes);
+		}
+
+		@Override
+		public byte[] encode(byte[] bytes) {
 			return dataEncoder.encode(bytes);
 		}
 	}
@@ -48,6 +53,11 @@ public class MultiBase {
 		@Override
 		public byte[] decode(String string) {
 			return dataDecoder.decode(string);
+		}
+
+		@Override
+		public byte[] decode(byte[] bytes) {
+			return dataDecoder.decode(bytes);
 		}
 	}
 

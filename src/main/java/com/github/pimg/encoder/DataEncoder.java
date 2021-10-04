@@ -1,7 +1,6 @@
 package com.github.pimg.encoder;
 
 public interface DataEncoder {
-
-	public String encode(byte[] bytes);
-
+	public String encodeToString(byte[] bytes);
+	public byte[] encode(byte[] bytes);
 }
