@@ -15,9 +15,23 @@ public class MultiBaseTest {
 	}
 
 	@Test
-	public void base64UrlEncodeTest() throws Exception {
+	public void base64DecodeTest() throws Exception {
 		String testString = "mdGhpcyBpcyBhIHRlc3Qgc3RyaW5n";
 		byte[] decodedString = MultiBase.getBase64Decoder().decode(testString);
+		assertEquals("this is a test string", new String(decodedString, StandardCharsets.UTF_8));
+	}
+
+	@Test
+	public void base64UrlEncodeTest() throws Exception {
+		String testString = "this is a test string";
+		String encodedString = MultiBase.getBase64UrlEncoder().encode(testString.getBytes(StandardCharsets.UTF_8));
+		assertEquals("udGhpcyBpcyBhIHRlc3Qgc3RyaW5n", encodedString);
+	}
+
+	@Test
+	public void base64UrlDecodeTest() throws Exception {
+		String testString = "udGhpcyBpcyBhIHRlc3Qgc3RyaW5n";
+		byte[] decodedString = MultiBase.getBase64UrlDecoder().decode(testString);
 		assertEquals("this is a test string", new String(decodedString, StandardCharsets.UTF_8));
 	}
 }

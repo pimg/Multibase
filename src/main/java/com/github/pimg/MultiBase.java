@@ -2,6 +2,7 @@ package com.github.pimg;
 
 
 import com.github.pimg.dataformat.Base64;
+import com.github.pimg.dataformat.Base64Url;
 import com.github.pimg.encoder.DataDecoder;
 import com.github.pimg.encoder.DataEncoder;
 
@@ -13,6 +14,14 @@ public class MultiBase {
 
 	public static Decoder getBase64Decoder() {
 		return new Decoder(new Base64());
+	}
+
+	public static Encoder getBase64UrlEncoder() {
+		return new Encoder(new Base64Url());
+	}
+
+	public static Decoder getBase64UrlDecoder() {
+		return new Decoder(new Base64Url());
 	}
 
 	public static class Encoder implements DataEncoder{

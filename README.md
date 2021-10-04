@@ -7,8 +7,9 @@ Note, this library is still under development.
 Currently supported data formats are:
 
 - Base64
+- Base64URL
 
-### Usaage
+### Usage
 The Multiformat uses the same interface as the JDK Base64 class.
 
 JDK Base64:
@@ -16,7 +17,7 @@ JDK Base64:
 Base64.getEncoder().encode("test".getBytes(StandardCharsets.UTF_8));
 ```
 
-MultiBase:
+MultiBase Base64:
 ```java
 MultiBase.getBase64Encoder().encode("test".getBytes(StandardCharsets.UTF_8));
 ```
