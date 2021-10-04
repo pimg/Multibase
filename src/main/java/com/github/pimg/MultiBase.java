@@ -41,7 +41,7 @@ public class MultiBase {
 	public static class Decoder implements DataDecoder{
 		private final DataDecoder dataDecoder;
 
-		public Decoder(DataDecoder dataDecoder) {
+		private Decoder(DataDecoder dataDecoder) {
 			this.dataDecoder = dataDecoder;
 		}
 
