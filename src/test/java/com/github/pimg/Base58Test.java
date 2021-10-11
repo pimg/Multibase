@@ -1,11 +1,11 @@
 package com.github.pimg;
 
 import com.github.pimg.dataformat.Base58;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Base58Test {
@@ -45,5 +45,20 @@ public class Base58Test {
 		byte[] testByteArr = {48, 0,0,111,111};
 		String encodedString = base58.encodeToString(testByteArr);
 		assertEquals("6R6WzL6", encodedString);
+	}
+
+	@Test
+	public void testBase58Decode() throws Exception {
+		String testStr = "QfC2";
+		String decodedString =  new String(base58.decode(testStr));
+		assertEquals("Foo", decodedString);
+	}
+
+	@Test
+	public void testBase58DecodeLeadingZeros() throws Exception {
+		String testStr = "119Ur";
+		byte[] testByteArr = {0,0,111,111};
+		byte[] decodedBytes = base58.decode(testStr);
+		assertArrayEquals(testByteArr, decodedBytes);
 	}
 }
