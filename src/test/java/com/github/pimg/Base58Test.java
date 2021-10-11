@@ -10,12 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Base58Test {
 
-	private Base58 base58;
-
-	@BeforeEach
-	public void init() {
-		base58 = new Base58();
-	}
+	private Base58 base58 = new Base58();
 
 	@Test
 	public void testBase58Encode() throws Exception {
