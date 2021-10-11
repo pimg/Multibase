@@ -1,6 +1,7 @@
 package com.github.pimg;
 
 import com.github.pimg.dataformat.Base58;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
@@ -9,7 +10,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Base58Test {
 
-	private final Base58 base58 = new Base58();
+	private Base58 base58;
+
+	@BeforeEach
+	public void init() {
+		base58 = new Base58();
+	}
 
 	@Test
 	public void testBase58Encode() throws Exception {
