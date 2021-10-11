@@ -35,12 +35,14 @@ public class Base58Test {
 	@Test
 	public void testBase58EncodeLeadingZeros() throws Exception {
 		byte[] testByteArr = {0,0,111,111};
-		base58.encodeToString(testByteArr);
+		String encodedString = base58.encodeToString(testByteArr);
+		assertEquals("119Ur", encodedString);
 	}
 
 	@Test
 	public void testBase58EncodeMiddleZeros() throws Exception {
 		byte[] testByteArr = {48, 0,0,111,111};
-		base58.encodeToString(testByteArr);
+		String encodedString = base58.encodeToString(testByteArr);
+		assertEquals("6R6WzL6", encodedString);
 	}
 }
