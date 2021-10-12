@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.nio.charset.StandardCharsets;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MultibaseTest {
+public class MultibaseBase64Test {
 
 	@Test
 	public void base64EncodeTest() throws Exception {
