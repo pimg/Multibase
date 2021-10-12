@@ -1,14 +1,12 @@
 package com.github.pimg.dataformat;
 
+import com.github.pimg.dataformat.util.MultibaseBytes;
+
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 public class Base58 implements Dataformat{
-	//https://tools.ietf.org/id/draft-msporny-base58-01.html
-	//https://github.com/bitcoinj/bitcoinj/blob/master/core/src/main/java/org/bitcoinj/core/Base58.java
-	//https://medium.com/concerning-pharo/understanding-base58-encoding-23e673e37ff6
-	//https://learnmeabitcoin.com/technical/base58
 
 	private static final char[] ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz".toCharArray();
 
@@ -41,15 +39,11 @@ public class Base58 implements Dataformat{
 	}
 
 	private byte[] padDecodedBytesWithZeros(byte[] decodedBytes, int leadingZeroCount) {
-//		byte[] fullDecodedBytes = Arrays.copyOf(decodedBytes, decodedBytes.length + leadingZeroCount);
-		byte[] fullDecodedBytes = new byte[decodedBytes.length + leadingZeroCount];
+		byte[] decodedZeroBytes = new byte[leadingZeroCount];
 		for (int i = 0; i < leadingZeroCount; i++) {
-			fullDecodedBytes[i] = (byte)0x0;
+			decodedZeroBytes[i] = (byte)0x0;
 		}
-		for (int i = leadingZeroCount; i<fullDecodedBytes.length; i++) {
-			fullDecodedBytes[i] = decodedBytes[i-leadingZeroCount];
-		}
-		return fullDecodedBytes;
+		return MultibaseBytes.concatenateByteArrays(decodedZeroBytes,decodedBytes);
 	}
 
 	private int getLeadingZeroCount(String string) {

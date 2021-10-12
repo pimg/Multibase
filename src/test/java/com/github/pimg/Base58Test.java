@@ -61,4 +61,5 @@ public class Base58Test {
 		byte[] decodedBytes = base58.decode(testStr);
 		assertArrayEquals(testByteArr, decodedBytes);
 	}
+
 }

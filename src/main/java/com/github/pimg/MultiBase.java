@@ -43,8 +43,10 @@ public class MultiBase {
 		}
 	}
 
+	//TODO migrate Multibase prefix to this level to make the implementations pure encodings
 	public static class Decoder implements DataDecoder{
 		private final DataDecoder dataDecoder;
+		//TODO private final String prefix;
 
 		private Decoder(DataDecoder dataDecoder) {
 			this.dataDecoder = dataDecoder;
