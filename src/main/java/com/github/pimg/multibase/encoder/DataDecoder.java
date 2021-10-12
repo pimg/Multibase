@@ -1,4 +1,4 @@
-package com.github.pimg.encoder;
+package com.github.pimg.multibase.encoder;
 
 public interface DataDecoder {
 	public byte[] decode(String string);

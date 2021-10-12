@@ -1,6 +1,6 @@
-package com.github.pimg.dataformat;
+package com.github.pimg.multibase.dataformat;
 
-import com.github.pimg.dataformat.util.MultibaseBytes;
+import com.github.pimg.multibase.dataformat.util.MultibaseBytes;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;

@@ -1,4 +1,4 @@
-package com.github.pimg.dataformat.util;
+package com.github.pimg.multibase.dataformat.util;
 
 public class MultibaseBytes {
 	public static byte[] concatenateByteArrays(byte[] prefixBytes, byte[] encodedBytes) {

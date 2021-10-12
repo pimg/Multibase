@@ -1,6 +1,6 @@
 package com.github.pimg;
 
-import com.github.pimg.dataformat.Base58;
+import com.github.pimg.multibase.dataformat.Base58;
 import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;

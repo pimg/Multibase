@@ -1,12 +1,12 @@
-package com.github.pimg;
+package com.github.pimg.multibase;
 
 
-import com.github.pimg.dataformat.Base64;
-import com.github.pimg.dataformat.Base64Url;
-import com.github.pimg.encoder.DataDecoder;
-import com.github.pimg.encoder.DataEncoder;
+import com.github.pimg.multibase.dataformat.Base64;
+import com.github.pimg.multibase.dataformat.Base64Url;
+import com.github.pimg.multibase.encoder.DataDecoder;
+import com.github.pimg.multibase.encoder.DataEncoder;
 
-public class MultiBase {
+public class Multibase {
 
 	public static Encoder getBase64Encoder() {
 		return new Encoder(new Base64());
