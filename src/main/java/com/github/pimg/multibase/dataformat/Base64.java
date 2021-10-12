@@ -1,6 +1,6 @@
-package com.github.pimg.dataformat;
+package com.github.pimg.multibase.dataformat;
 
-import com.github.pimg.dataformat.util.MultibaseBytes;
+import com.github.pimg.multibase.dataformat.util.MultibaseBytes;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
@@ -25,7 +25,7 @@ public class Base64  implements Dataformat {
 	public byte[] encode(byte[] bytes) {
 		byte[] base64Prefix = "m".getBytes(StandardCharsets.UTF_8);
 		byte[] encodedBytes = java.util.Base64.getEncoder().encode(bytes);
-		return MultibaseBytes.createMultiBaseByteArr(base64Prefix, encodedBytes);
+		return MultibaseBytes.concatenateByteArrays(base64Prefix, encodedBytes);
 	}
 
 }

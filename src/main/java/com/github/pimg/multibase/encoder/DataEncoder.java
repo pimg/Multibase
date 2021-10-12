@@ -1,4 +1,4 @@
-package com.github.pimg.encoder;
+package com.github.pimg.multibase.encoder;
 
 public interface DataEncoder {
 	public String encodeToString(byte[] bytes);
