@@ -33,7 +33,7 @@ public class Multibase {
 		return new Decoder(new Base58());
 	}
 
-	public static class Encoder implements DataEncoder{
+	public static class Encoder implements DataEncoder {
 
 		private final DataEncoder dataEncoder;
 
@@ -43,17 +43,26 @@ public class Multibase {
 
 		@Override
 		public String encodeToString(byte[] bytes) {
+			if (bytes == null || bytes.length < 1) {
+				throw new IllegalArgumentException();
+			}
+
 			return dataEncoder.encodeToString(bytes);
 		}
 
 		@Override
 		public byte[] encode(byte[] bytes) {
+			if (bytes == null || bytes.length < 1) {
+				throw new IllegalArgumentException();
+			}
+
 			return dataEncoder.encode(bytes);
 		}
 	}
 
 	//TODO migrate Multibase prefix to this level to make the implementations pure encodings
-	public static class Decoder implements DataDecoder{
+	public static class Decoder implements DataDecoder {
+
 		private final DataDecoder dataDecoder;
 		//TODO private final String prefix;
 
@@ -63,15 +72,22 @@ public class Multibase {
 
 		@Override
 		public byte[] decode(String string) {
+			if (string == null || string.isEmpty()) {
+				throw new IllegalArgumentException();
+			}
+
 			return dataDecoder.decode(string);
 		}
 
 		@Override
 		public byte[] decode(byte[] bytes) {
+			if (bytes == null || bytes.length < 1) {
+				throw new IllegalArgumentException();
+			}
+
 			return dataDecoder.decode(bytes);
 		}
 	}
-
 
 }
 
