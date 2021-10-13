@@ -3,7 +3,8 @@ package com.github.pimg.multibase;
 public enum MultibaseEncodings {
 	BASE64("m"),
 	BASE64_URL("u"),
-	BASE58("z");
+	BASE58("z"),
+	HEX("f");
 
 	private final String prefixString;
 

@@ -13,28 +13,28 @@ public class MultibaseBase58Test {
 	@Test
 	public void testBase58Encode() throws Exception {
 		String testStr = "Foo";
-		String encodedString =  Multibase.getBase58Encoder().encodeToString(testStr.getBytes(StandardCharsets.UTF_8));
+		String encodedString =  Multibase.getBase58Encoder().encodeToString(testStr.getBytes(StandardCharsets.US_ASCII));
 		assertEquals("zQfC2", encodedString);
 	}
 
 	@Test
 	public void testBase58EncodeHelloWorld() throws Exception {
 		String testStr = "Hello World!";
-		String encodedString = Multibase.getBase58Encoder().encodeToString(testStr.getBytes(StandardCharsets.UTF_8));
+		String encodedString = Multibase.getBase58Encoder().encodeToString(testStr.getBytes(StandardCharsets.US_ASCII));
 		assertEquals("z2NEpo7TZRRrLZSi2U", encodedString);
 	}
 
 	@Test
 	public void testBase58EncodeHelloWorldToByteArray() throws Exception {
 		String testStr = "Hello World!";
-		byte[] encodedBytes = Multibase.getBase58Encoder().encode(testStr.getBytes(StandardCharsets.UTF_8));
-		assertArrayEquals("z2NEpo7TZRRrLZSi2U".getBytes(StandardCharsets.UTF_8), encodedBytes);
+		byte[] encodedBytes = Multibase.getBase58Encoder().encode(testStr.getBytes(StandardCharsets.US_ASCII));
+		assertArrayEquals("z2NEpo7TZRRrLZSi2U".getBytes(StandardCharsets.US_ASCII), encodedBytes);
 	}
 
 	@Test
 	public void testBase58EncodeFullAlphabet() throws Exception {
 		String testStr = "The quick brown fox jumps over the lazy dog.";
-		String encodedString = Multibase.getBase58Encoder().encodeToString(testStr.getBytes(StandardCharsets.UTF_8));
+		String encodedString = Multibase.getBase58Encoder().encodeToString(testStr.getBytes(StandardCharsets.US_ASCII));
 		assertEquals("zUSm3fpXnKG5EUBx2ndxBDMPVciP5hGey2Jh4NDv6gmeo1LkMeiKrLJUUBk6Z", encodedString);
 	}
 
@@ -70,7 +70,7 @@ public class MultibaseBase58Test {
 	@Test
 	public void testBase58DecodeBytes() throws Exception {
 		String testStr = "zQfC2";
-		String decodedString =  new String(Multibase.getBase58Decoder().decode(testStr.getBytes(StandardCharsets.UTF_8)));
+		String decodedString =  new String(Multibase.getBase58Decoder().decode(testStr.getBytes(StandardCharsets.US_ASCII)));
 		assertEquals("Foo", decodedString);
 	}
 

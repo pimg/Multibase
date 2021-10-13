@@ -4,6 +4,7 @@ package com.github.pimg.multibase;
 import com.github.pimg.multibase.dataformat.Base58;
 import com.github.pimg.multibase.dataformat.Base64;
 import com.github.pimg.multibase.dataformat.Base64Url;
+import com.github.pimg.multibase.dataformat.Hex;
 import com.github.pimg.multibase.dataformat.util.MultibaseBytes;
 import com.github.pimg.multibase.encoder.DataDecoder;
 import com.github.pimg.multibase.encoder.DataEncoder;
@@ -35,6 +36,14 @@ public class Multibase {
 
 	public static Decoder getBase58Decoder() {
 		return new Decoder(new Base58());
+	}
+
+	public static Encoder getHexEncoder() {
+		return new Encoder(new Hex(), MultibaseEncodings.HEX.toString());
+	}
+
+	public static Decoder getHexDecoder() {
+		return new Decoder(new Hex());
 	}
 
 	public static class Encoder implements DataEncoder {

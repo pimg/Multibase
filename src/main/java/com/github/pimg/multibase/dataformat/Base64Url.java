@@ -1,10 +1,5 @@
 package com.github.pimg.multibase.dataformat;
 
-import com.github.pimg.multibase.dataformat.util.MultibaseBytes;
-
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-
 public class Base64Url implements Dataformat{
 	@Override
 	public byte[] decode(String string) {
