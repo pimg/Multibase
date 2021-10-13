@@ -4,13 +4,17 @@ package com.github.pimg.multibase;
 import com.github.pimg.multibase.dataformat.Base58;
 import com.github.pimg.multibase.dataformat.Base64;
 import com.github.pimg.multibase.dataformat.Base64Url;
+import com.github.pimg.multibase.dataformat.util.MultibaseBytes;
 import com.github.pimg.multibase.encoder.DataDecoder;
 import com.github.pimg.multibase.encoder.DataEncoder;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 public class Multibase {
 
 	public static Encoder getBase64Encoder() {
-		return new Encoder(new Base64());
+		return new Encoder(new Base64(), "m");
 	}
 
 	public static Decoder getBase64Decoder() {
@@ -18,7 +22,7 @@ public class Multibase {
 	}
 
 	public static Encoder getBase64UrlEncoder() {
-		return new Encoder(new Base64Url());
+		return new Encoder(new Base64Url(), "u");
 	}
 
 	public static Decoder getBase64UrlDecoder() {
@@ -26,36 +30,45 @@ public class Multibase {
 	}
 
 	public static Encoder getBase58Encoder() {
-		return new Encoder(new Base58());
+		return new Encoder(new Base58(), "z");
 	}
 
 	public static Decoder getBase58Decoder() {
 		return new Decoder(new Base58());
 	}
 
-	public static class Encoder implements DataEncoder{
+	public static class Encoder implements DataEncoder {
 
 		private final DataEncoder dataEncoder;
+		private final String prefix;
 
-		private Encoder(DataEncoder dataEncoder) {
+		private Encoder(DataEncoder dataEncoder, String prefix) {
 			this.dataEncoder = dataEncoder;
+			this.prefix = prefix;
 		}
 
 		@Override
 		public String encodeToString(byte[] bytes) {
-			return dataEncoder.encodeToString(bytes);
+			if (bytes == null || bytes.length < 1) {
+				throw new IllegalArgumentException();
+			}
+
+			return prefix + dataEncoder.encodeToString(bytes);
 		}
 
 		@Override
 		public byte[] encode(byte[] bytes) {
-			return dataEncoder.encode(bytes);
+			if (bytes == null || bytes.length < 1) {
+				throw new IllegalArgumentException();
+			}
+
+			return MultibaseBytes.concatenateByteArrays(prefix.getBytes(StandardCharsets.US_ASCII), dataEncoder.encode(bytes));
 		}
 	}
 
-	//TODO migrate Multibase prefix to this level to make the implementations pure encodings
-	public static class Decoder implements DataDecoder{
+	public static class Decoder implements DataDecoder {
+
 		private final DataDecoder dataDecoder;
-		//TODO private final String prefix;
 
 		private Decoder(DataDecoder dataDecoder) {
 			this.dataDecoder = dataDecoder;
@@ -63,15 +76,22 @@ public class Multibase {
 
 		@Override
 		public byte[] decode(String string) {
-			return dataDecoder.decode(string);
+			if (string == null || string.isEmpty()) {
+				throw new IllegalArgumentException();
+			}
+
+			return dataDecoder.decode(string.substring(1));
 		}
 
 		@Override
 		public byte[] decode(byte[] bytes) {
-			return dataDecoder.decode(bytes);
+			if (bytes == null || bytes.length < 1) {
+				throw new IllegalArgumentException();
+			}
+
+			return dataDecoder.decode(Arrays.copyOfRange(bytes, 1, bytes.length));
 		}
 	}
-
 
 }
 

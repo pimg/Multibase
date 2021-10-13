@@ -27,8 +27,8 @@ public class MultibaseBase58Test {
 	@Test
 	public void testBase58EncodeHelloWorldToByteArray() throws Exception {
 		String testStr = "Hello World!";
-		byte[] encodedbytes = Multibase.getBase58Encoder().encode(testStr.getBytes(StandardCharsets.UTF_8));
-		assertArrayEquals("z2NEpo7TZRRrLZSi2U".getBytes(StandardCharsets.UTF_8), encodedbytes);
+		byte[] encodedBytes = Multibase.getBase58Encoder().encode(testStr.getBytes(StandardCharsets.UTF_8));
+		assertArrayEquals("z2NEpo7TZRRrLZSi2U".getBytes(StandardCharsets.UTF_8), encodedBytes);
 	}
 
 	@Test
