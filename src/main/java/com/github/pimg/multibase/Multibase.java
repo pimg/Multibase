@@ -14,7 +14,7 @@ import java.util.Arrays;
 public class Multibase {
 
 	public static Encoder getBase64Encoder() {
-		return new Encoder(new Base64(), "m");
+		return new Encoder(new Base64(), MultibaseEncodings.BASE64.toString());
 	}
 
 	public static Decoder getBase64Decoder() {
@@ -22,7 +22,7 @@ public class Multibase {
 	}
 
 	public static Encoder getBase64UrlEncoder() {
-		return new Encoder(new Base64Url(), "u");
+		return new Encoder(new Base64Url(), MultibaseEncodings.BASE64_URL.toString());
 	}
 
 	public static Decoder getBase64UrlDecoder() {
@@ -30,7 +30,7 @@ public class Multibase {
 	}
 
 	public static Encoder getBase58Encoder() {
-		return new Encoder(new Base58(), "z");
+		return new Encoder(new Base58(), MultibaseEncodings.BASE58.toString());
 	}
 
 	public static Decoder getBase58Decoder() {
