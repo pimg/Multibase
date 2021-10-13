@@ -47,7 +47,7 @@ public class MultibaseBase64Test {
 	public void base64UrlEncodeToBytesTest() throws Exception {
 		String testString = "this is a test string";
 		byte[] encodedString = Multibase.getBase64UrlEncoder().encode(testString.getBytes(StandardCharsets.UTF_8));
-		assertEquals("mdGhpcyBpcyBhIHRlc3Qgc3RyaW5n", new String(encodedString, StandardCharsets.UTF_8));
+		assertEquals("udGhpcyBpcyBhIHRlc3Qgc3RyaW5n", new String(encodedString, StandardCharsets.UTF_8));
 	}
 
 	@Test

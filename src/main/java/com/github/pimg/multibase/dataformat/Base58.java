@@ -12,12 +12,11 @@ public class Base58 implements Dataformat{
 
 	@Override
 	public byte[] decode(String string) {
-		String base58String = string.substring(1);
-		char[] reversedCharacters = new StringBuilder(base58String).reverse().toString().toCharArray();
+		char[] reversedCharacters = new StringBuilder(string).reverse().toString().toCharArray();
 
 		BigInteger base10Buffer = convertToBase10(reversedCharacters);
 
-		int leadingZeroCount = getLeadingZeroCount(base58String);
+		int leadingZeroCount = getLeadingZeroCount(string);
 		byte[] decodedBytes;
 		if(leadingZeroCount > 0) {
 			decodedBytes = padDecodedBytesWithZeros(base10Buffer.toByteArray(), leadingZeroCount);
@@ -61,6 +60,7 @@ public class Base58 implements Dataformat{
 
 	@Override
 	public byte[] decode(byte[] bytes) {
+
 		return decode(new String(bytes));
 	}
 
@@ -79,7 +79,7 @@ public class Base58 implements Dataformat{
 
 		encodeLeadingZeros(bytes, encodingBuffer);
 
-		return "z"+encodingBuffer.toString();
+		return encodingBuffer.toString();
 	}
 
 	private void encodeBase58(BigInteger base256Message, StringBuilder encodingBuffer) {
