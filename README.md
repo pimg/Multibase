@@ -1,5 +1,6 @@
 # Java Multibase
-![CI tests](https://github.com/pimg/Multibase/actions/workflows/CI/badge.svg)
+![CI tests](https://github.com/pimg/Multibase/actions/workflows/main.yml/badge.svg)
+
 This is a Java implementation of the IETF Multibase standard. 
 The standard is currently in draft status. More information: https://www.ietf.org/id/draft-multiformats-multibase-04.html
 
