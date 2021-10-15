@@ -2,65 +2,64 @@ package com.github.pimg;
 
 import com.github.pimg.multibase.Multibase;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.nio.charset.StandardCharsets;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MultibaseBase58Test {
+class MultibaseBase58Test {
 
-	@Test
-	public void testBase58Encode() throws Exception {
-		String testStr = "Foo";
-		String encodedString =  Multibase.getBase58Encoder().encodeToString(testStr.getBytes(StandardCharsets.US_ASCII));
-		assertEquals("zQfC2", encodedString);
+	private static Stream<Arguments> provideParameters() {
+		return Stream.of(
+			Arguments.of("Foo", "zQfC2"),
+			Arguments.of("Hello World!", "z2NEpo7TZRRrLZSi2U"),
+			Arguments.of("The quick brown fox jumps over the lazy dog.", "zUSm3fpXnKG5EUBx2ndxBDMPVciP5hGey2Jh4NDv6gmeo1LkMeiKrLJUUBk6Z")
+		);
 	}
 
-	@Test
-	public void testBase58EncodeHelloWorld() throws Exception {
-		String testStr = "Hello World!";
+	@ParameterizedTest(name = "Encode base58 {0}")
+	@MethodSource("provideParameters")
+	void testBase58Encodeparameterized(String testStr, String expectedStr) {
 		String encodedString = Multibase.getBase58Encoder().encodeToString(testStr.getBytes(StandardCharsets.US_ASCII));
-		assertEquals("z2NEpo7TZRRrLZSi2U", encodedString);
+		assertEquals(expectedStr, encodedString);
 	}
 
 	@Test
-	public void testBase58EncodeHelloWorldToByteArray() throws Exception {
+	void testBase58EncodeHelloWorldToByteArray() throws Exception {
 		String testStr = "Hello World!";
 		byte[] encodedBytes = Multibase.getBase58Encoder().encode(testStr.getBytes(StandardCharsets.US_ASCII));
 		assertArrayEquals("z2NEpo7TZRRrLZSi2U".getBytes(StandardCharsets.US_ASCII), encodedBytes);
 	}
 
 	@Test
-	public void testBase58EncodeFullAlphabet() throws Exception {
-		String testStr = "The quick brown fox jumps over the lazy dog.";
-		String encodedString = Multibase.getBase58Encoder().encodeToString(testStr.getBytes(StandardCharsets.US_ASCII));
-		assertEquals("zUSm3fpXnKG5EUBx2ndxBDMPVciP5hGey2Jh4NDv6gmeo1LkMeiKrLJUUBk6Z", encodedString);
-	}
-
-	@Test
-	public void testBase58EncodeLeadingZeros() throws Exception {
+	void testBase58EncodeLeadingZeros() throws Exception {
 		byte[] testByteArr = {0,0,111,111};
 		String encodedString = Multibase.getBase58Encoder().encodeToString(testByteArr);
 		assertEquals("z119Ur", encodedString);
 	}
 
 	@Test
-	public void testBase58EncodeMiddleZeros() throws Exception {
+	void testBase58EncodeMiddleZeros() throws Exception {
 		byte[] testByteArr = {48, 0,0,111,111};
 		String encodedString = Multibase.getBase58Encoder().encodeToString(testByteArr);
 		assertEquals("z6R6WzL6", encodedString);
 	}
 
 	@Test
-	public void testBase58Decode() throws Exception {
+	void testBase58Decode() throws Exception {
 		String testStr = "zQfC2";
 		String decodedString =  new String(Multibase.getBase58Decoder().decode(testStr));
 		assertEquals("Foo", decodedString);
 	}
 
 	@Test
-	public void testBase58DecodeLeadingZeros() throws Exception {
+	void testBase58DecodeLeadingZeros() throws Exception {
 		String testStr = "z119Ur";
 		byte[] testByteArr = {0,0,111,111};
 		byte[] decodedBytes = Multibase.getBase58Decoder().decode(testStr);
@@ -68,7 +67,7 @@ public class MultibaseBase58Test {
 	}
 
 	@Test
-	public void testBase58DecodeBytes() throws Exception {
+	void testBase58DecodeBytes() throws Exception {
 		String testStr = "zQfC2";
 		String decodedString =  new String(Multibase.getBase58Decoder().decode(testStr.getBytes(StandardCharsets.US_ASCII)));
 		assertEquals("Foo", decodedString);

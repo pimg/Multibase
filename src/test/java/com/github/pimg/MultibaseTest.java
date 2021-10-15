@@ -5,26 +5,30 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MultibaseTest {
+class MultibaseTest {
 
 	@Test
-	public void testEncodeEmptyBytes() {
-		assertThrows(IllegalArgumentException.class, () -> Multibase.getBase58Encoder().encodeToString(new byte[]{}));
+	void testEncodeEmptyBytes() {
+		Multibase.Encoder encoder = Multibase.getBase58Encoder();
+		assertThrows(IllegalArgumentException.class, () -> encoder.encodeToString(new byte[]{}));
 	}
 
 	@Test
-	public void testEncodeNull() {
-		assertThrows(IllegalArgumentException.class, () -> Multibase.getBase58Encoder().encodeToString(null));
+	void testEncodeNull() {
+		Multibase.Encoder encoder = Multibase.getBase58Encoder();
+		assertThrows(IllegalArgumentException.class, () -> encoder.encodeToString(null));
 	}
 
 	@Test
-	public void decodeNull() {
+	void decodeNull() {
 		String testString = null;
-		assertThrows(IllegalArgumentException.class, () -> Multibase.getBase64Decoder().decode(testString));
+		Multibase.Decoder decoder = Multibase.getBase64Decoder();
+		assertThrows(IllegalArgumentException.class, () -> decoder.decode(testString));
 	}
 
 	@Test
-	public void decodeEmptyString() {
-		assertThrows(IllegalArgumentException.class, () -> Multibase.getBase64Decoder().decode(""));
+	void decodeEmptyString() {
+		Multibase.Decoder decoder = Multibase.getBase64Decoder();
+		assertThrows(IllegalArgumentException.class, () -> decoder.decode(""));
 	}
 }

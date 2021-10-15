@@ -14,6 +14,10 @@ import java.util.Arrays;
 
 public class Multibase {
 
+	private Multibase() {
+		throw new IllegalStateException("Methods should be accessed in a static way.");
+	}
+
 	public static Encoder getBase64Encoder() {
 		return new Encoder(new Base64(), MultibaseEncodings.BASE64.toString());
 	}
