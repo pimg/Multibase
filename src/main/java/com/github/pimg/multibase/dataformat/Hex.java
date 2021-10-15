@@ -23,9 +23,9 @@ public class Hex implements Dataformat{
 
 	@Override
 	public String encodeToString(byte[] bytes) {
-		StringBuffer hexBuffer = new StringBuffer();
+		StringBuilder hexBuffer = new StringBuilder();
 		for (byte singleByte:bytes) {
-			hexBuffer.append(Integer.toHexString(singleByte));
+			hexBuffer.append(String.format("%02x",singleByte));
 		}
 		return hexBuffer.toString();
 	}

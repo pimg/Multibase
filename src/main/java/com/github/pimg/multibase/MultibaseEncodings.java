@@ -12,6 +12,7 @@ public enum MultibaseEncodings {
 		this.prefixString = prefixString;
 	}
 
+	@Override
 	public String toString() {
 		return this.prefixString;
 	}
