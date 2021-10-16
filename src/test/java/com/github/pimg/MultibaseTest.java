@@ -1,5 +1,7 @@
 package com.github.pimg;
 
+import com.github.pimg.multibase.encoder.Decoder;
+import com.github.pimg.multibase.encoder.Encoder;
 import com.github.pimg.multibase.Multibase;
 import org.junit.jupiter.api.Test;
 
@@ -9,26 +11,26 @@ class MultibaseTest {
 
 	@Test
 	void testEncodeEmptyBytes() {
-		Multibase.Encoder encoder = Multibase.getBase58Encoder();
+		Encoder encoder = Multibase.BASE58.getEncoder();
 		assertThrows(IllegalArgumentException.class, () -> encoder.encodeToString(new byte[]{}));
 	}
 
 	@Test
 	void testEncodeNull() {
-		Multibase.Encoder encoder = Multibase.getBase58Encoder();
+		Encoder encoder = Multibase.BASE58.getEncoder();
 		assertThrows(IllegalArgumentException.class, () -> encoder.encodeToString(null));
 	}
 
 	@Test
 	void decodeNull() {
 		String testString = null;
-		Multibase.Decoder decoder = Multibase.getBase64Decoder();
+		Decoder decoder = Multibase.BASE64.getDecoder();
 		assertThrows(IllegalArgumentException.class, () -> decoder.decode(testString));
 	}
 
 	@Test
 	void decodeEmptyString() {
-		Multibase.Decoder decoder = Multibase.getBase64Decoder();
+		Decoder decoder = Multibase.BASE64.getDecoder();
 		assertThrows(IllegalArgumentException.class, () -> decoder.decode(""));
 	}
 }

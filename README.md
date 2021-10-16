@@ -14,14 +14,21 @@ Currently supported data formats are:
 - Hexadecimal 
 
 ### Usage
-The Multiformat uses a similar interface as the JDK Base64 class.
+The Multiformat uses a somewhat similar interface as the JDK Base64 class.
+The different encoding and decoding formats are encapsulated in the Multibase enum.
 
 JDK Base64:
 ```java
 Base64.getEncoder().encode("test".getBytes(StandardCharsets.UTF_8));
 ```
 
-MultiBase Base64:
+Multibase Base64:
 ```java
-MultiBase.getBase64Encoder().encode("test".getBytes(StandardCharsets.UTF_8));
+Multibase.BASE64.getEncoder().encode("test".getBytes(StandardCharsets.UTF_8));
+```
+
+Multibase HEX:
+```java
+String testHexStr = "f466f6f";
+byte[] decodedByteArr = Multibase.HEX.getDecoder().decode(testHexStr);
 ```
