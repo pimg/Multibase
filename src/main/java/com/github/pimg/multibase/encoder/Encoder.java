@@ -1,7 +1,6 @@
 package com.github.pimg.multibase.encoder;
 
 import com.github.pimg.multibase.dataformat.util.MultibaseBytes;
-import com.github.pimg.multibase.encoder.DataEncoder;
 
 import java.nio.charset.StandardCharsets;
 

@@ -1,7 +1,5 @@
 package com.github.pimg.multibase.encoder;
 
-import com.github.pimg.multibase.encoder.DataDecoder;
-
 import java.util.Arrays;
 
 public class Decoder implements DataDecoder {
