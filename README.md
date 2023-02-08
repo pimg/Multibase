@@ -12,6 +12,7 @@ Currently supported data formats are:
 - Base64URL
 - Base58
 - Hexadecimal 
+- Octal
 
 ### Usage
 The Multiformat uses a somewhat similar interface as the JDK Base64 class.

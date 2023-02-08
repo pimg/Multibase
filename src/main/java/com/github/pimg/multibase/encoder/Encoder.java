@@ -29,6 +29,6 @@ public class Encoder implements DataEncoder {
 			throw new IllegalArgumentException();
 		}
 
-		return MultibaseBytes.concatenateByteArrays(prefix.getBytes(StandardCharsets.US_ASCII), dataEncoder.encode(bytes));
+		return MultibaseBytes.concatenateByteArrays(prefix.getBytes(StandardCharsets.UTF_8), dataEncoder.encode(bytes));
 	}
 }
