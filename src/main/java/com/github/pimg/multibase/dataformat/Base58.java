@@ -66,7 +66,7 @@ public class Base58 implements Dataformat{
 
 	@Override
 	public byte[] encode(byte[] bytes) {
-		return encodeToString(bytes).getBytes(StandardCharsets.US_ASCII);
+		return encodeToString(bytes).getBytes(StandardCharsets.UTF_8);
 	}
 
 	@Override

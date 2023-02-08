@@ -26,15 +26,15 @@ class MultibaseBase58Test {
 	@ParameterizedTest(name = "Encode base58 {0}")
 	@MethodSource("provideParameters")
 	void testBase58Encodeparameterized(String testStr, String expectedStr) {
-		String encodedString = Multibase.BASE58.getEncoder().encodeToString(testStr.getBytes(StandardCharsets.US_ASCII));
+		String encodedString = Multibase.BASE58.getEncoder().encodeToString(testStr.getBytes(StandardCharsets.UTF_8));
 		assertEquals(expectedStr, encodedString);
 	}
 
 	@Test
 	void testBase58EncodeHelloWorldToByteArray() throws Exception {
 		String testStr = "Hello World!";
-		byte[] encodedBytes = Multibase.BASE58.getEncoder().encode(testStr.getBytes(StandardCharsets.US_ASCII));
-		assertArrayEquals("z2NEpo7TZRRrLZSi2U".getBytes(StandardCharsets.US_ASCII), encodedBytes);
+		byte[] encodedBytes = Multibase.BASE58.getEncoder().encode(testStr.getBytes(StandardCharsets.UTF_8));
+		assertArrayEquals("z2NEpo7TZRRrLZSi2U".getBytes(StandardCharsets.UTF_8), encodedBytes);
 	}
 
 	@Test
@@ -69,7 +69,7 @@ class MultibaseBase58Test {
 	@Test
 	void testBase58DecodeBytes() throws Exception {
 		String testStr = "zQfC2";
-		String decodedString =  new String(Multibase.BASE58.getDecoder().decode(testStr.getBytes(StandardCharsets.US_ASCII)));
+		String decodedString =  new String(Multibase.BASE58.getDecoder().decode(testStr.getBytes(StandardCharsets.UTF_8)));
 		assertEquals("Foo", decodedString);
 	}
 

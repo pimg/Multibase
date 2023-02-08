@@ -13,7 +13,7 @@ public class Hex implements Dataformat{
 			decodedBuffer.append((char) Integer.parseInt(str, 16));
 		}
 
-		return decodedBuffer.toString().getBytes(StandardCharsets.US_ASCII);
+		return decodedBuffer.toString().getBytes(StandardCharsets.UTF_8);
 	}
 
 	@Override
