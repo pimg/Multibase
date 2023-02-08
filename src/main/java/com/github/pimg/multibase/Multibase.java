@@ -8,7 +8,9 @@ public enum Multibase {
 	BASE64(new Base64(), "m"),
 	BASE64_URL(new Base64Url(), "u"),
 	BASE58(new Base58(), "z"),
-	HEX(new Hex(), "f");
+	HEX(new Hex(), "f"),
+
+	OCTAL(new Octal(), "7");
 
 	private final Dataformat dataformat;
 	private final String prefixString;

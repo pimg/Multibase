@@ -2,7 +2,7 @@
 ![CI tests](https://github.com/pimg/Multibase/actions/workflows/main.yml/badge.svg)
 
 This is a Java implementation of the IETF Multibase standard. 
-The standard is currently in draft status. More information: https://www.ietf.org/id/draft-multiformats-multibase-04.html
+The standard is currently in draft status. More information: https://www.ietf.org/archive/id/draft-multiformats-multibase-06.html
 
 ### Current status
 Note, this library is still under development.
